@@ -1,6 +1,3 @@
-.idea/
-.idea/dataSources/3924af5c-26ff-4804-98cf-d938b2719651.xml
-
 api/__pycache__/
 api/migrations/0001_initial.py
 api/migrations/0002_stadium.py
@@ -19,7 +16,6 @@ home/migrations/__pycache__/0002_auto_20170628_0927.cpython-35.pyc
 home/migrations/__pycache__/0003_auto_20170628_0929.cpython-35.pyc
 home/migrations/__pycache__/0004_auto_20170628_0930.cpython-35.pyc
 home/migrations/__pycache__/0005_delete_border.cpython-35.pyc
-.idea/
 home/static/json/
 static/common/css/leaflet.css
 static/common/images/
