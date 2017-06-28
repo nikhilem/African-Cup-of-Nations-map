@@ -41,10 +41,12 @@ DJANGO_APPS = [
 ]
 VENDOR_APPS = [
     'rest_framework',
+    'django_mysql'
 ]
 CUSTOM_APPS = [
     'users.apps.UsersConfig',
     'home.apps.HomeConfig',
+    'api.apps.ApiConfig'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + VENDOR_APPS + CUSTOM_APPS
@@ -86,11 +88,31 @@ WSGI_APPLICATION = 'AfricanCN.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'AFN',
+        'USER': 'root',
+        'PASSWORD': 'Palace@1',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'OPTIONS': {
+            # Tell MySQLdb to connect with 'utf8mb4' character set
+            'charset': 'utf8mb4',
+        },
+        # Tell Django to build the test database with the 'utf8mb4' character set
+        'TEST': {
+            'CHARSET': 'utf8mb4',
+            'COLLATION': 'utf8mb4_unicode_ci',
+        }
     }
 }
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

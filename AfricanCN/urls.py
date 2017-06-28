@@ -17,10 +17,20 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from api import views
+
+router = routers.DefaultRouter()
+router.register(r'borders', views.BorderViewSet)
+router.register(r'stadiums', views.StadiumViewSet)
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/', include(router.urls)),
     url(r'^', include('home.urls')),
+
 ]
 
 if settings.DEBUG:
