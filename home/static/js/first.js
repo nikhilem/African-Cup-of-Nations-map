@@ -34,7 +34,12 @@ $.ajax({
 
 function displayBorders() {
     map.on('load', function () {
+        var color;
         for(var i=0; i<borders.length; i++){
+            if(borders[i]["country_id"]==="ZAF")
+                color = "#e05c28";
+            else
+                color = "#088";
             map.addLayer({
                 'id': borders[i]["country_id"],
                 'type': 'fill',
@@ -45,7 +50,7 @@ function displayBorders() {
                 },
                 'layout': {},
                 'paint': {
-                    'fill-color': '#088',
+                    'fill-color': color,
                     'fill-opacity': 0.8
                 }
             });

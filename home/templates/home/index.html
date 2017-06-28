@@ -4,12 +4,11 @@
         <div class="heading">
             <h1>Geo-Data of African Cup of Nations</h1>
         </div>
-    <div class="buttons">
-        <a class="button is-large is-dark" href="{% url 'home:first' %}">2013</a>
-        <a class="button is-large is-dark" href="{% url 'home:second' %}">2015</a>
-        <a class="button is-large is-dark" href="{% url 'home:third' %}">2017</a>
-    </div>
-
+        <div class="buttons">
+            <a class="button is-large is-dark" href="{% url 'home:first' %}">2013</a>
+            <a class="button is-large is-dark" href="{% url 'home:second' %}">2015</a>
+            <a class="button is-large is-dark" href="{% url 'home:third' %}">2017</a>
+        </div>
     </div>
     <style>
         .container{
@@ -28,10 +27,10 @@
             flex-basis: 80%;
             justify-content: space-around;
         }
-    h1{
-        font-size: 48px;
-    }
 
+        h1{
+            font-size: 48px;
+        }
     </style>
 
 {% endblock %}

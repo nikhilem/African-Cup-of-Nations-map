@@ -2,13 +2,27 @@
     margin: 0;
     padding: 0;
 }
-#h{
-    height: 20vh;
-    width: 100%;
+body{
+    background-color: #74AFAD;
+    height: 100vh;
+}
+.columns{
+    height: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.column{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #map{
-    height: 80vh;
-    width: 100vw;
+    height: 90%;
+    width: 100%;
+    align-self: center;
+    border: 5px solid beige;
 }
 .marker {
     display: block;
@@ -16,4 +30,20 @@
     border-radius: 5%;
     cursor: pointer;
     padding: 0;
+}
+.card{
+    width: 80%;
+    text-align: center;
+}
+#blue{
+    float: left;
+    width: 20px;
+    height: 20px;
+    background-color: #088;
+}
+#orange{
+    float: left;
+    width: 20px;
+    height: 20px;
+    background-color: #e05c28;
 }
