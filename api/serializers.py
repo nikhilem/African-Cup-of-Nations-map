@@ -11,4 +11,4 @@ class BorderSerializer(serializers.HyperlinkedModelSerializer):
 class StadiumSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Stadium
-        fields = ('city', 'name', 'latitude', 'longitude', 'photo')
+        fields = ('city', 'name', 'latitude', 'longitude')
