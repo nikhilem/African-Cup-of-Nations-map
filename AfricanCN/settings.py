@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import dj_database_url
 
+import psycopg2
+
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 
@@ -44,7 +46,9 @@ DJANGO_APPS = [
 ]
 VENDOR_APPS = [
     'rest_framework',
-    'django_mysql'
+    'whitenoise',
+    'dj_database_url',
+    'psycopg2'
 ]
 CUSTOM_APPS = [
     'users.apps.UsersConfig',
@@ -89,27 +93,16 @@ WSGI_APPLICATION = 'AfricanCN.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AFN',
-        'USER': 'root',
-        'PASSWORD': 'Palace@1',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-        'OPTIONS': {
-            # Tell MySQLdb to connect with 'utf8mb4' character set
-            'charset': 'utf8mb4',
-        },
-        # Tell Django to build the test database with the 'utf8mb4' character set
-        'TEST': {
-            'CHARSET': 'utf8mb4',
-            'COLLATION': 'utf8mb4_unicode_ci',
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'qmwnebrvt',
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
-
 DATABASES['default'].update(db_from_env)
 
 REST_FRAMEWORK = {
