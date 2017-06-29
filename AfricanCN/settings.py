@@ -50,6 +50,7 @@ VENDOR_APPS = [
     'dj_database_url',
     'psycopg2',
 
+
 ]
 CUSTOM_APPS = [
     'users.apps.UsersConfig',
@@ -104,12 +105,12 @@ WSGI_APPLICATION = 'AfricanCN.wsgi.application'
 #         'PORT': '5433',
 #     }
 # }
+
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
 }
-DATABASES['default'].update(db_from_env)
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -165,3 +166,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
