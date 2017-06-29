@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'r3=o8ob1t@)y*_(=8^)oq&t(zhl-9b=fe6qh4iy)9l5z=3j&s%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -91,6 +91,8 @@ TEMPLATES = [
     },
 ]
 
+WSGI_APPLICATION = 'AfricanCN.wsgi.application'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -102,9 +104,8 @@ DATABASES = {
     }
 }
 
-WSGI_APPLICATION = 'AfricanCN.wsgi.application'
-
-DATABASES['default'] = dj_database_url.config()
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
