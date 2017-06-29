@@ -47,6 +47,8 @@
                 </div>
             </div>
         </div>
+    {% load staticfiles %}
+    <link href="{% static 'css/first.css' %}" type="text/css" rel="stylesheet">
 
     <script type="text/javascript">
         mapboxgl.accessToken = 'pk.eyJ1IjoibmlraGlsZW0iLCJhIjoiY2o0Y3p3ZXhkMHMzeTMzcDQybjVkdHRzcCJ9.8yPYHj1w1dVystaR6-e5mQ';
@@ -165,8 +167,5 @@
         });
 
     </script>
-    {% load staticfiles %}
-    <link href="{% static 'css/first.css' %}" type="text/css" rel="stylesheet">
-    <script src="{% static 'js/first.js' %}" type="text/javascript"></script>
 
 {% endblock %}
