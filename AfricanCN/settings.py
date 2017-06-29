@@ -15,7 +15,7 @@ import dj_database_url
 import psycopg2
 from decouple import config
 
-db_from_env = dj_database_url.config(conn_max_age=500)
+# db_from_env = dj_database_url.config(conn_max_age=500)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -91,26 +91,20 @@ TEMPLATES = [
     },
 ]
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'qmwnebrvt',
+        'HOST': 'localhost',
+        'PORT': '5433',
+    }
+}
+
 WSGI_APPLICATION = 'AfricanCN.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'myproject',
-#         'USER': 'myprojectuser',
-#         'PASSWORD': 'qmwnebrvt',
-#         'HOST': 'localhost',
-#         'PORT': '5433',
-#     }
-# }
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+DATABASES['default'] = dj_database_url.config()
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -166,8 +160,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
