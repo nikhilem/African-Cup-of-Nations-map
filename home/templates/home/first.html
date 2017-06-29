@@ -120,7 +120,6 @@
                     "properties": {
                         "message": stadiums[i].name,
                         "iconSize": [60, 60],
-                        "photo": stadiums[i].photo
                     },
                     "geometry": {
                         "type": "Point",
@@ -133,7 +132,7 @@
                 // create a DOM element for the marker
                 var el = document.createElement('div');
                 el.className = 'marker';
-                el.style.backgroundImage = 'url(' + marker.properties.photo + ')';
+                el.style.backgroundColor = '#088';
                 el.style.backgroundPosition = 'center center';
                 el.style.width = marker.properties.iconSize[0] + 'px';
                 el.style.height = marker.properties.iconSize[1] + 'px';
