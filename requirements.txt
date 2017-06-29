@@ -10,5 +10,6 @@ Markdown==2.6.8
 olefile==0.44
 Pillow==4.1.1
 psycopg2==2.7.1
+python-decouple==3.0
 pytz==2017.2
 whitenoise==3.3.0

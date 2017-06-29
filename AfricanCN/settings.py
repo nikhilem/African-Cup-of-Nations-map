@@ -12,9 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
-
 import psycopg2
-
+from decouple import config
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 
@@ -27,10 +26,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r3=o8ob1t@)y*_(=8^)oq&t(zhl-9b=fe6qh4iy)9l5z=3j&s%'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -48,7 +48,8 @@ VENDOR_APPS = [
     'rest_framework',
     'whitenoise',
     'dj_database_url',
-    'psycopg2'
+    'psycopg2',
+
 ]
 CUSTOM_APPS = [
     'users.apps.UsersConfig',
@@ -93,15 +94,20 @@ WSGI_APPLICATION = 'AfricanCN.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'myproject',
+#         'USER': 'myprojectuser',
+#         'PASSWORD': 'qmwnebrvt',
+#         'HOST': 'localhost',
+#         'PORT': '5433',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'qmwnebrvt',
-        'HOST': 'localhost',
-        'PORT': '5433',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 DATABASES['default'].update(db_from_env)
 
